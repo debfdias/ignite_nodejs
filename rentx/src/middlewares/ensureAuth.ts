@@ -28,6 +28,11 @@ export async function ensureAuth(request: Request, response: Response, next: Nex
     }
 
     next();
+
+    request.user = {
+      id: user_id
+    }
+
   } catch {
     throw new AppError("Invalid token!", 401);
   }
