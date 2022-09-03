@@ -4,6 +4,7 @@ import { Car } from "../../entities/Car";
 import { ICarsRepository } from "../ICarsRepository";
 
 class CarsRepositoryMemory implements ICarsRepository {
+  
   cars: Car[] = [];
 
   async create({ name, description, brand, daily_rate, fine_amount, license_plate, category_id, id }: ICreateCarDTO): Promise<Car> {
@@ -57,6 +58,12 @@ class CarsRepositoryMemory implements ICarsRepository {
     const findIndex = this.cars.findIndex(findCar => findCar.id === car.id);
 
     this.cars[findIndex] = car;
+  }
+
+  async updateAvailable(id: string, available: boolean): Promise<void> {
+    const index = this.cars.findIndex(car => car.id === id);
+
+    this.cars[index].available = available;
   }
 }
 

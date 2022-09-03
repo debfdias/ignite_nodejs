@@ -1,6 +1,5 @@
 import { Specification } from "../entities/Specification";
 
-
 interface ICreateCarDTO {
   name: string;
   description: string;

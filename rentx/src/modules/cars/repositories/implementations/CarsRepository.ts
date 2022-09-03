@@ -11,6 +11,16 @@ class CarsRepository implements ICarsRepository {
     this.ormRepository = getRepository(Car);
   }
 
+  async updateAvailable(id: string, available: boolean): Promise<void> {
+    await this.ormRepository
+          .createQueryBuilder()
+          .update()
+          .set({available})
+          .where("id=:id")
+          .setParameters({id})
+          .execute()
+  }
+
   async create(data: ICreateCarDTO): Promise<Car> {
     const car = this.ormRepository.create({
       name: data.name,

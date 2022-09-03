@@ -1,6 +1,5 @@
 import { inject, injectable } from 'tsyringe';
 
-import { IBaseUseCase } from '../../../../shared/useCases/IBaseUseCase';
 import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
 import { Car } from '../../entities/Car';
 
@@ -11,7 +10,7 @@ interface IRequest {
 }
 
 @injectable()
-class ListAvailableCarsUseCase implements IBaseUseCase {
+class ListAvailableCarsUseCase {
   constructor(
     @inject('CarsRepository')
     private carsRepository: ICarsRepository,

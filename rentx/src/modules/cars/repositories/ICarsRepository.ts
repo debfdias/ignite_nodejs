@@ -8,6 +8,7 @@ interface ICarsRepository {
   findAllAvailable(data?: IFindAllAvailableDTO): Promise<Car[]>;
   findById(id: string): Promise<Car | undefined>;
   save(car: Car): Promise<void>;
+  updateAvailable(id: string, available: boolean): Promise<void>
 }
 
-export { ICarsRepository }
+export { ICarsRepository } 

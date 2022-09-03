@@ -2,7 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 import { container } from 'tsyringe';
 
-import { uploadConfig } from '@config/upload';
+import uploadConfig from '@config/upload';
 import { CreateCarController } from '../modules/cars/useCases/CreateCar/CreateCarController';
 import { ensureAuth } from '../middlewares/ensureAuth';
 import { UploadCarImageController } from '../modules/cars/useCases/UploadCarImage/UploadCarImageController';
@@ -18,7 +18,7 @@ const listAvailableCarsController = new ListAvailableCarsController();
 const createCarSpecificationsController = new CreateCarSpecificationController();
 const uploadCarImagesController = new UploadCarImageController();
 
-const uploadCarImage = multer(uploadConfig.upload('./tmp/cars'));
+const uploadCarImage = multer(uploadConfig);
 
 carsRoutes.get('/available', listAvailableCarsController.handle);
 
